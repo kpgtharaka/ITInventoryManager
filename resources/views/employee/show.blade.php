@@ -7,8 +7,6 @@
     <title>Employee</title>
 </head>
 <body>
-    @foreach ($employees as $employee)
         <a href="{{ route('employee.show',$employee->id) }}">{{ $employee->emp_no }}</a> {{ $employee->first_name }} {{ $employee->last_name }} {{ $employee->email}} {{ $employee->phone}} {{ $employee->address}} <br>
-    @endforeach
 </body>
 </html>

@@ -8,4 +8,4 @@ Route::get('/', function () {
 });
 
 Route::get('employee', [EmployeeController::class,'index'])->name('employee');
-Route::get('employee/{emplooyee}', [EmployeeController::class,'edit'])->name('employee.show');
+Route::get('employee/{employee}', [EmployeeController::class,'show'])->name('employee.show');
