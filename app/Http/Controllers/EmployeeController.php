@@ -14,7 +14,7 @@ class EmployeeController extends Controller
     {
         $employees = Employee::all();
 
-        return view("employee", ['employees'=> $employees]);
+        return view("employee.index", ['employees'=> $employees]);
     }
 
     /**
@@ -46,7 +46,7 @@ class EmployeeController extends Controller
      */
     public function edit(Employee $employee)
     {
-        //
+        return view('employee.edit', ['employee'=> $employee]);
     }
 
     /**
