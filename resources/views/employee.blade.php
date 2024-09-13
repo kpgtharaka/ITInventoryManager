@@ -8,7 +8,7 @@
 </head>
 <body>
     @foreach ($employees as $employee)
-        {{ $employee->emp_no }} {{ $employee->first_name }} {{ $employee->last_name }} {{ $employee->email}} {{ $employee->phone}} {{ $employee->address}} <br>
+        <a href="{{ route('employee.edit',$employee->id) }}">{{ $employee->emp_no }}</a> {{ $employee->first_name }} {{ $employee->last_name }} {{ $employee->email}} {{ $employee->phone}} {{ $employee->address}} <br>
     @endforeach
 </body>
 </html>
