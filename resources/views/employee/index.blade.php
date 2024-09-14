@@ -33,4 +33,7 @@
             </div>
         @endforeach
     </div>
+        <div class="w-full mt-3">
+            {{ $employees->links() }}
+        </div>
 </x-app-layout>

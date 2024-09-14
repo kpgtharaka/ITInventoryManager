@@ -10,9 +10,20 @@ class EmployeeController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $employees = Employee::all();
+        $q= $request->input('q');
+        $employees = Employee::query();
+    	if(!empty($q)){
+        	$employees=$employees->orWhere('first_name','LIKE','%'.$q.'%');
+        	$employees=$employees->orWhere('last_name','LIKE','%'.$q.'%');
+        	$employees=$employees->orWhere('emp_no','LIKE','%'.$q.'%');
+        	$employees=$employees->orWhere('address','LIKE','%'.$q.'%');
+        	$employees=$employees->orWhere('email','LIKE','%'.$q.'%');
+        	$employees=$employees->orWhere('phone','LIKE','%'.$q.'%');
+        }
+        $employees=$employees->orderBy('created_at', 'desc')
+        ->paginate();
 
         return view("employee.index", ['employees'=> $employees]);
     }
