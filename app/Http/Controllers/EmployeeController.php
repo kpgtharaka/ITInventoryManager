@@ -28,9 +28,9 @@ class EmployeeController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request, Employee $employee)
     {
-        //
+        
     }
 
     /**
@@ -54,7 +54,18 @@ class EmployeeController extends Controller
      */
     public function update(Request $request, Employee $employee)
     {
-        //
+        $data = $request->validate([
+            'emp_no' => ['required','string'],
+            'first_name' => ['required', 'string'],
+            'last_name' => ['required', 'string'],
+            'email'=> ['required','email'],
+            'phone'=> ['required','string'],
+            'address' => ['required', 'string']
+        ]);
+
+
+        $employee->update($data);
+        return to_route('employee.show', $employee)->with('message', 'Employee was Updated');
     }
 
     /**

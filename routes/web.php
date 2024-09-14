@@ -10,3 +10,4 @@ Route::get('/', function () {
 Route::get('employee', [EmployeeController::class,'index'])->name('employee.index');
 Route::get('employee/{employee}', [EmployeeController::class,'show'])->name('employee.show');
 Route::get('employee/{employee}/edit', [EmployeeController::class,'edit'])->name('employee.edit');
+Route::post('employee/{employee}/update', [EmployeeController::class,'update'])->name('employee.update');
