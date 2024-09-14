@@ -22,7 +22,7 @@ class EmployeeController extends Controller
      */
     public function create()
     {
-        //
+        return view('employee.create');
     }
 
     /**
@@ -30,7 +30,18 @@ class EmployeeController extends Controller
      */
     public function store(Request $request, Employee $employee)
     {
+        $data = $request->validate([
+            'emp_no' => ['required','string'],
+            'first_name' => ['required', 'string'],
+            'last_name' => ['required', 'string'],
+            'email'=> ['required','email'],
+            'phone'=> ['required','string'],
+            'address' => ['required', 'string']
+        ]);
         
+        $employee = Employee::create($data);
+
+        return to_route('employee.show', $employee)->with('message', 'Employee was Created');
     }
 
     /**
