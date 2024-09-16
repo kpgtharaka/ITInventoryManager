@@ -1,6 +1,6 @@
 <nav class="flex items-center justify-between p-6 lg:px-8" aria-label="Global">
     <div class="flex lg:flex-1">
-      <a href="#" class="-m-1.5 p-1.5">
+      <a href="/" class="-m-1.5 p-1.5">
         <span class="sr-only">Your Company</span>
         <img class="h-8 w-auto" src="/images/logo.png" alt="">
       </a>
@@ -14,11 +14,21 @@
       </button>
     </div>
     <div class="hidden lg:flex lg:gap-x-12">
-        <a href="/employee" class="text-sm font-semibold leading-6 text-gray-900">Employee</a>
+        @auth
+           <a href="/employee" class="text-sm font-semibold leading-6 text-gray-900">Employee</a>
+        @endauth
     </div>
     
     <div class="hidden lg:flex lg:flex-1 lg:justify-end">
-      {{-- <a href="#" class="text-sm font-semibold leading-6 text-gray-900">Log in <span aria-hidden="true">&rarr;</span></a> --}}
+      @guest
+      <a href="/login" class="text-sm font-semibold leading-6 text-gray-900">Log in <span aria-hidden="true">&rarr;</span></a>
+      @endguest
+      @auth
+            <form action="/logout" method="post">
+              @csrf
+              <button class="text-sm font-semibold leading-6 text-gray-900">Logout</button>
+            </form>
+            @endauth
     </div>
   </nav>
   
@@ -43,9 +53,18 @@
         <div class="-my-6 divide-y divide-gray-500/10">
           <div class="space-y-2 py-6">
             <a href="/employee" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Employee</a>
+            
           </div>
           <div class="py-6">
-            {{-- <a href="#" class="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Log in</a> --}}
+            @auth
+            <form action="/logout" method="post">
+              @csrf
+              <button class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Logout</button>
+            </form>
+            @endauth
+            @guest 
+            <a href="/login" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Log in</a>
+            @endguest
           </div>
         </div>
       </div>
