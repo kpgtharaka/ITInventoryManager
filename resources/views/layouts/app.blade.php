@@ -12,7 +12,7 @@
 
 <body class="font-sans ">
     <div class="bg-white">
-        <header class=" inset-x-0 top-0 z-50 fixed">
+        <header class="bg-white shadow inset-x-0 top-0 z-50 fixed">
             @include('layouts.navigation')
         </header>
         <div class="relative isolate px-6 pt-14 lg:px-8">
