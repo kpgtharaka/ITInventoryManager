@@ -15,7 +15,8 @@
     </div>
     <div class="hidden lg:flex lg:gap-x-12">
         @auth
-           <a href="/employee" class="text-sm font-semibold leading-6 text-gray-900">Employee</a>
+        <a href="/employee" class="text-sm font-semibold leading-6 text-gray-900">Employee</a>
+        <a href="/computer" class="text-sm font-semibold leading-6 text-gray-900">Computer</a>
         @endauth
     </div>
     

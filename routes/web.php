@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\ComputerController;
 use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\MonitorController;
 use App\Http\Controllers\RegisteredUserController;
 use App\Http\Controllers\SessionController;
 use Illuminate\Support\Facades\Route;
@@ -17,6 +19,12 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::post('employee/{employee}/update', [EmployeeController::class,'update'])->name('employee.update');
     Route::get('employee', [EmployeeController::class,'index'])->name('employee.index');
     Route::delete('employee/{employee}', [EmployeeController::class,'destroy'])->name('employee.destroy');
+    
+    Route::resource('computer', ComputerController::class);
+    Route::resource('monitor', MonitorController::class);
+
+    Route::post('computer/{computer}/bind', [ComputerController::class, 'bind'])->name('computer.bind');
+    Route::post('computer/{computer}/unbind', [ComputerController::class, 'unbind'])->name('computer.unbind');
 });
 
 //Auth

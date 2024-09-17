@@ -2,7 +2,9 @@
 
 namespace Database\Seeders;
 
+use App\Models\Computer;
 use App\Models\Employee;
+use App\Models\Monitor;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -22,6 +24,8 @@ class DatabaseSeeder extends Seeder
             'email' => 'test@example.com',
             'password'=> bcrypt('pass123.')
         ]);
-        Employee::factory(100)->create();
+        Employee::factory(100)->create();        
+        Computer::factory(100)->create();      
+        Monitor::factory(100)->create();
     }
 }
