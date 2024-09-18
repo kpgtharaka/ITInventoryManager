@@ -11,7 +11,7 @@
  </div>
     <div class="mt-5 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-3">
         @foreach ($employees as $employee)
-            <div class="flex p-3 border border-gray-950 backdrop-blur-xl bg-white/30 hover:bg-white cursor-pointer rounded">
+            <div class="flex p-3 border border-gray-950 backdrop-blur-xl bg-white/50 hover:bg-blue-200 cursor-pointer rounded">
                 <div class="">
                     <div class="h-28 block">
                         <a href="{{ route('employee.show', $employee) }}"><strong

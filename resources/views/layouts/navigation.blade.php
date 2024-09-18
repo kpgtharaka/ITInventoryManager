@@ -34,7 +34,7 @@
   </nav>
   
   <!-- Mobile menu, show/hide based on menu open state. -->
-  <div class="lg:hidden " role="dialog" aria-modal="true" id="responsivemenu">
+  <div class="lg:hidden hidden" role="dialog" aria-modal="true" id="responsivemenu">
     <!-- Background backdrop, show/hide based on slide-over state. -->
     <div class="fixed inset-0 z-50"></div>
     <div class="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
@@ -54,6 +54,7 @@
         <div class="-my-6 divide-y divide-gray-500/10">
           <div class="space-y-2 py-6">
             <a href="/employee" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Employee</a>
+            <a href="/computer" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Computer</a>
             
           </div>
           <div class="py-6">
