@@ -25,6 +25,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     Route::post('computer/{computer}/bind', [ComputerController::class, 'bind'])->name('computer.bind');
     Route::post('computer/{computer}/unbind', [ComputerController::class, 'unbind'])->name('computer.unbind');
+    Route::post('monitor/{monitor}/bind', [MonitorController::class, 'bind'])->name('monitor.bind');
+    Route::post('monitor/{monitor}/unbind', [MonitorController::class, 'unbind'])->name('monitor.unbind');
 });
 
 //Auth
