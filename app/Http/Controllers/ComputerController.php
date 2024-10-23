@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Computer;
 use App\Models\Monitor;
+use App\Models\Peripheral;
 use Illuminate\Http\Request;
 
 class ComputerController extends Controller
@@ -64,7 +65,12 @@ class ComputerController extends Controller
             return !in_array($monitor->id, $attachedMonitorIds);
         });
 
-        return view('computer.show', ['computer' => $computer,'monitors' => $availableMonitors]);
+        $peripherals=Peripheral::all();
+        $attachedPeripheralIds = $computer->peripherals->pluck('id')->toArray();
+        $availablePeripherals = $peripherals->filter(function ($peripheral) use ($attachedPeripheralIds) {
+            return !in_array($peripheral->id,$attachedPeripheralIds);
+        });
+        return view('computer.show', ['computer' => $computer,'monitors' => $availableMonitors],['peripherals' => $availablePeripherals]);
     }
 
     /**
@@ -117,6 +123,21 @@ class ComputerController extends Controller
             dd($computer);
         }
         return to_route('computer.show', $computer)->with('message', 'Monitor was deattached');
+    }
+    public function bindp(Computer $computer){
+        $peripheral = request('peripheral');
+        $computer->peripherals()->attach($peripheral);
+        return to_route('computer.show', $computer)->with('message', 'Peripheral was attached');
+
+    }
+
+    public function unbindp(Computer $computer)
+    {
+        $peripheral = request('peripheral');
+        if(! $computer->peripherals()->detach($peripheral)){
+            dd($computer);
+        }
+        return to_route('computer.show', $computer)->with('message', 'Peripheral was deattached');
 
     }
 

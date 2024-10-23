@@ -32,6 +32,19 @@
                     <x-button class="">Attach</x-button>
                 </form>
             </div>
+            <div class="w-96 mt-3 border rounded p-3">
+                Attach a peripheral ({{ $peripherals->count() }} available)
+                <form method="POST" action="{{ route('computer.bindp', $computer) }}">
+                    @csrf
+                    <select name="peripheral" class="my-3 p-2">
+                        @foreach ($peripherals as $peripheral)
+                            <option value="{{ $peripheral->id }}">{{ Str::upper($peripheral->serial) }} -
+                                {{ $peripheral->make }} ({{ $peripheral->model }}) : {{ $peripheral->type }} </option>
+                        @endforeach
+                    </select>
+                    <x-button class="">Attach</x-button>
+                </form>
+            </div>
         </div>
         @if ($computer->monitors->count() > 0)
             <div class="mt-5"> Monitors assigned to Computer
@@ -43,6 +56,24 @@
                             <form method="POST" action="{{ route('computer.unbind', $computer) }}">
                                 @csrf
                                 <input type="hidden" name="monitor" value="{{ $monitor->id }}" />
+                                <button class="text-xs border rounded py-1 px-2 bg-red-300 hover:bg-red-500">X</button>
+                            </form>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+        @endif
+
+        @if ($computer->peripherals->count() > 0)
+            <div class="mt-5">Peripherals assigned to Computer
+                <div class="border rouded w-full">
+                    @foreach ($computer->peripherals as $peripheral)
+                        <div class="border-b-2 p-2 cursor-pointer align-middle hover:bg-blue-100 flex justify-between">
+                            <a href="{{ route('peripheral.show', $peripheral->id) }}">{{ Str::upper($peripheral->serial) }}
+                                - {{ $peripheral->make }} ( {{ $peripheral->model }}) : {{ $peripheral->type }} </a>
+                            <form method="POST" action="{{ route('computer.unbindp', $computer) }}">
+                                @csrf
+                                <input type="hidden" name="peripheral" value="{{ $peripheral->id }}" />
                                 <button class="text-xs border rounded py-1 px-2 bg-red-300 hover:bg-red-500">X</button>
                             </form>
                         </div>

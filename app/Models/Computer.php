@@ -15,4 +15,9 @@ class Computer extends Model
     {
         return $this->belongsToMany(Monitor::class);
     }
+
+    public function peripherals(): BelongsToMany
+    {
+        return $this->belongsToMany(Peripheral::class);
+    }
 }

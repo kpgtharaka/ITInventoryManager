@@ -3,6 +3,7 @@
 use App\Http\Controllers\ComputerController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\MonitorController;
+use App\Http\Controllers\PeripheralController;
 use App\Http\Controllers\RegisteredUserController;
 use App\Http\Controllers\SessionController;
 use Illuminate\Support\Facades\Route;
@@ -22,11 +23,18 @@ Route::middleware(['auth', 'verified'])->group(function () {
     
     Route::resource('computer', ComputerController::class);
     Route::resource('monitor', MonitorController::class);
+    Route::resource('peripheral', PeripheralController::class);
 
     Route::post('computer/{computer}/bind', [ComputerController::class, 'bind'])->name('computer.bind');
     Route::post('computer/{computer}/unbind', [ComputerController::class, 'unbind'])->name('computer.unbind');
+    
+    Route::post('computer/{computer}/bindp', [ComputerController::class, 'bindp'])->name('computer.bindp');
+    Route::post('computer/{computer}/unbindp', [ComputerController::class, 'unbindp'])->name('computer.unbindp');
+
     Route::post('monitor/{monitor}/bind', [MonitorController::class, 'bind'])->name('monitor.bind');
     Route::post('monitor/{monitor}/unbind', [MonitorController::class, 'unbind'])->name('monitor.unbind');
+    Route::post('peripheral/{peripheral}/bind', [peripheralController::class, 'bind'])->name('peripheral.bind');
+    Route::post('peripheral/{peripheral}/unbind', [peripheralController::class, 'unbind'])->name('peripheral.unbind');
 });
 
 //Auth

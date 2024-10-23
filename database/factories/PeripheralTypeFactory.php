@@ -17,8 +17,8 @@ class PeripheralTypeFactory extends Factory
     public function definition(): array
     {
         return[
-            //'type'->$this->faker->randomElement(['Keyboard','Mouse','Printer','Scanner']),
-            'type'=>$this->faker->numberBetween(1,4),
+            'type'->$this->faker->randomElement(['Keyboard','Mouse','Printer','Scanner']),
+            //'type'=>$this->faker->numberBetween(1,4),
             'description'=>$this->faker->regexify('[A-Z]{5}[0-4]{3}')
         ];
     }
