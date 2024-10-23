@@ -41,9 +41,7 @@ class MonitorController extends Controller
         $data = $request->validate([
             'serial' => ['required', 'string'],
             'make' => ['required', 'string'],
-            'model' => ['required', 'string'],
-            'purchased_date' => ['required', 'string'],
-            'price' => ['required', 'string']
+            'model' => ['required', 'string']
         ]);
         //$data['user_id'] = $request->user()->id;
         $monitor = Monitor::create($data);
@@ -81,9 +79,7 @@ class MonitorController extends Controller
         $data = $request->validate([
             'serial' => ['required', 'string'],
             'make' => ['required', 'string'],
-            'model' => ['required', 'string'],
-            'purchased_date' => ['required', 'string'],
-            'price' => ['required', 'string']
+            'model' => ['required', 'string']
         ]);
         $monitor->update($data);
 
